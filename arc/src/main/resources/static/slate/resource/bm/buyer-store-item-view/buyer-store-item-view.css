@@ -1,0 +1,14 @@
+
+.frame{
+    width: 100%;
+    height: calc(100% - 8vh);
+}
+
+.container{
+    width: auto;
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #2ac1bc aliceblue;
+}

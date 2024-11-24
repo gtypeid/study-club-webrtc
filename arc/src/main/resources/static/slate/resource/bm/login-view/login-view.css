@@ -1,0 +1,99 @@
+
+
+.frame{
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    margin-top: 125px;
+    font-family: BMDOHYEON;
+}
+
+
+.login-box-title-h{
+    font-size: 60px;
+    font-weight: 500;
+    color: rgb(42, 193, 188);
+    font-weight: bold;
+    text-align: center;
+}
+
+.login-box-id{
+    margin-bottom: 50px;
+}
+
+.login-box-password{
+    margin-bottom: 50px;
+}
+
+.login-box-id-input{
+    height: 55px;
+    width: 100%;
+    font-size: 35px;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.login-box-password-input{
+    height: 55px;
+    width: 100%;
+    font-size: 35px;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.login-box-button-wrap{
+    display: flex;
+    margin-top: 50px;
+}
+
+.login-box-button{
+    display:grid;
+    align-items:center;
+    
+    background-color: rgb(42, 193, 188);
+    border-radius: 5px;
+    color: white;
+
+    width: 30%;
+    height: 55px;
+    margin: 0px auto;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.1s;
+}
+
+.login-box-button-p{
+    text-align: center;
+    font-size: 17px;
+    margin: 0px;
+}
+
+.signin-box-button{
+    display:grid;
+    align-items:center;
+    
+    background-color: rgb(42, 193, 188);
+    border-radius: 5px;
+    color: white;
+
+    width: 30%;
+    height: 55px;
+    margin: 0px auto;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.1s;
+}
+
+.signin-box-button-p{
+    text-align: center;
+    font-size: 17px;
+    margin: 0px;
+}
+
+.login-box-button:hover{
+    background-color: rgb(42, 193, 188);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.15);
+}
+
+.signin-box-button:hover{
+    background-color: rgb(42, 193, 188);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.15);
+}

@@ -1,0 +1,63 @@
+
+
+.frame { 
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;  
+    background: linear-gradient(to top , #2ac1bc 90%, #5B7692)
+}
+
+.title { 
+    margin-right: 30px;
+    margin-top: 70px;
+    font-size : 0px; 
+    text-align: right;  
+    transition: font-size 0.2s;  
+}
+
+.title-img {
+    position: absolute; 
+    top: -50px;
+}
+
+.character-wrap{ 
+    display: inline-block;
+    position: absolute;
+    width: 210px; 
+    height: 250px;  
+}
+
+.character-img{ 
+    width: 100%; 
+    height: 100% 
+}
+
+.start-wrap{
+    width: 200px;
+    height: 75px;
+
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-100px);
+    position: absolute; 
+
+    cursor: pointer;
+}
+
+.sub-title{
+    color: rgb(228, 228, 228);
+    text-align: center;
+    font-size: 0px;
+    transition: font-size 0.2s;  
+}
+
+.sub-title:hover{
+    color: rgb(255, 255, 255);
+}
+
+.sub-title:active{
+    width: 220px; 
+    height: 90px;
+    transition: width 0.2s, height 0.2s, top 0.2s;
+}

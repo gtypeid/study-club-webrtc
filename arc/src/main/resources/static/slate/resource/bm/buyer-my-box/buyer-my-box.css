@@ -1,0 +1,41 @@
+
+
+.frame{
+    position: absolute; 
+    bottom: 0; 
+    width: 0%;
+    height: 8vh; 
+    border-radius: 15px 15px 0px 0px; 
+    box-shadow: 0px -5px 0px 0px rgba(137, 137, 137, 0.164); 
+    background-color: #26a5a1;
+    z-index: 1;
+
+    transition: width 0.6s;
+}
+
+.my { 
+    display: none;
+    position: relative; 
+    cursor: pointer;
+    top: 35%; 
+    left: 50%;
+    width: 85px; 
+    height: 85px; 
+    border-radius: 50%;  
+    background-color: #26a5a1;
+    box-shadow: 0px -5px 0px 0px rgba(56, 56, 56, 0.24);
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.my:active{
+    width: 100px; 
+    height: 100px;
+    transition: width 0.1s, height 0.1s, top 0.1s;
+}
+
+.character-img {
+    width: 93%; 
+    height: 100%; 
+    padding-left: 13px;
+}

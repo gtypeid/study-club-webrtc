@@ -1,0 +1,18 @@
+
+
+.con{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.room-entity{
+    flex: 0 0 30%; 
+    margin-right: 10px; 
+
+    border-style: solid;
+    cursor: pointer;
+}
+
+.room-info{
+    font: bold;
+}

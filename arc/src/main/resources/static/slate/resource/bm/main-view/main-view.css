@@ -1,0 +1,14 @@
+
+.frame {
+    width: 400px;
+    height: 85.5vh;
+    margin: auto;
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+    border-style: solid;
+    border-color: aliceblue;
+    border-width: 6px;
+    border-radius: 28px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.15);
+}

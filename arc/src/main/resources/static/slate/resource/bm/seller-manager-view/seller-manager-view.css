@@ -1,0 +1,104 @@
+
+.frame{
+    width: 100%;
+    height: 100%;
+}
+
+.top-board{
+    margin-top: 15px;
+    width: 100%;
+}
+
+.nav{
+    width: 100%;
+    height: auto;
+}
+
+.nav-img{
+    height: 50px;
+    transform: translateX(-45px);
+}
+
+.banner{
+    width: 100%;
+    height: 112px;
+    position: relative;
+    background-color: #5EBEBB;
+}
+
+.banner-h{
+    margin: 0px;
+    color: white;
+    text-align: center;
+    transform: translateY(15px);
+}
+
+.img-box{
+    width: 114px;
+    height: 112px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.banner-img{
+    width: 100%;
+    height: 100%;
+}
+
+.menu-button{
+    width: 90%;
+    height: 200px;
+    margin: 0px auto;
+    margin-top: 25px;
+    box-shadow : 3px 3px 5px 0px rgb(0 0 0 / 15%);
+    border : 1px solid #f1f1f1;
+    border-radius : 5px;
+    cursor: pointer;
+    transition: box-shadow 0.2s;  
+}
+
+.menu-button:hover{
+    box-shadow : 6px 6px 10px 0px rgb(0 0 0 / 35%);
+}
+
+.order-button{
+    width: 90%;
+    height: 200px;
+    margin: 0px auto;
+    margin-top: 25px;
+    box-shadow : 3px 3px 5px 0px rgb(0 0 0 / 15%);
+    border : 1px solid #f1f1f1;
+    border-radius : 5px;
+    cursor: pointer;
+    transition: box-shadow 0.2s;  
+}
+
+.order-button:hover{
+    box-shadow : 6px 6px 10px 0px rgb(0 0 0 / 35%);
+}
+
+.info-box{
+    height: 120px;
+    transform: translateY(40px);
+}
+
+.info-img-box{
+    width: 120px;
+    height: 100%;
+    margin: 0px auto;
+}
+
+.info-img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0px auto;
+}
+
+.info-h{
+    display: block;
+    margin: 0px auto;
+    font-size: 20px;
+    text-align: center;
+}

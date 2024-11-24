@@ -1,0 +1,102 @@
+
+.frame{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+}
+
+.back{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.75);
+}
+
+.order-box-wrap{
+    position: absolute;
+    bottom: 75px;
+    width: 100%;
+    height: auto;
+}
+
+.order-box{
+    background-color: rgb(38, 165, 161);
+    width: 90%;
+    height: 300px;
+    margin: 0px auto;
+    margin-top: 25px;
+    box-shadow : 6px 6px 10px 0px rgb(0 0 0 / 30%);
+    border : 1px solid rgb(38, 165, 161);
+    border-radius : 8px;
+}
+
+.img{
+    width: 170px;
+    transform: translateY(30px) translateX(15px);
+}
+
+.order-h{
+    text-align: center;
+    color: white;
+}
+
+.panel{
+    display: flex;
+    margin-left: 10px;
+    align-items: center
+}
+
+.panel-h{
+    font-size: 24px;
+    color: white;
+    margin: 6px;
+    width: 30%;
+}
+
+.value-h{
+    font-size: 21px;
+    color: black;
+    margin: 6px;
+}
+
+.button-wrap{
+    width: 90%;
+    height: 40px;
+    margin: 0px auto;
+    margin-top: 25px;
+    display: flex;
+    position: relative;
+}
+
+.commit-button{
+    width: 100px;
+    height: 40px;
+    box-shadow : 3px 3px 5px 0px rgb(0 0 0 / 15%);
+    background-color: #f1f1f1;
+    border : 1px solid #f1f1f1;
+    border-radius : 5px;
+    cursor: pointer;
+    transition: box-shadow 0.2s; 
+    left: 0px;
+    position: absolute;
+}
+
+.cancel-button{
+    width: 100px;
+    height: 40px;
+    box-shadow : 3px 3px 5px 0px rgb(0 0 0 / 15%);
+    background-color: #f1f1f1;
+    border : 1px solid #f1f1f1;
+    border-radius : 5px;
+    cursor: pointer;
+    transition: box-shadow 0.2s; 
+    right: 0px;
+    position: absolute;
+}
+
+.button-h{
+    font-size: 21px;
+    color: black;
+    text-align: center;
+    margin: 8px;
+}

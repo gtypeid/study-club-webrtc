@@ -1,0 +1,15 @@
+
+.frame{
+    width: 600px;
+    height: 100%;
+    border: solid;
+}
+
+.h-client-id{
+    font-size: xx-large;
+}
+
+.pipe-box{
+    width: 100%;
+    border: solid;
+}

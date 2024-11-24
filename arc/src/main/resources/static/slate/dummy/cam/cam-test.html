@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="cam-test.js"></script>
+</head>
+<body>
+    <video class="video" playsinline autoplay></video>
+    <video class="video" playsinline autoplay></video>
+    <div>
+        <button class="button"> CREATE - peerConnection </button> <br>
+        <button class="button"> CREATE - offer </button> <br>
+        <button class="button"> SetLocal - offer </button> <br><br>
+
+        <input type="text" class="handle-offer-input"><br>
+        <button class="button"> Handle - offer </button> <br>
+        <button class="button"> CREATE - none data chennel - peerConnection </button> <br>
+        <button class="button"> SetRemote - response offer </button> <br>
+        <button class="button"> CREATE - answer </button> <br>
+        <button class="button"> SetLocal - answer </button> <br><br>
+
+        <input type="text" class="handle-answer-input"><br>
+        <button class="button"> Handle - answer </button> <br>
+        <button class="button"> SetRemote - response answer </button> <br><br>
+
+        <input type="text" class="data-input"><br>
+        <button class="button"> DATA </button> <br><br>
+
+        <input type="text" class="memo-input" style="width: 200px; height: 100px;">
+        <button class="button"> GET </button> <br>
+        <button class="button"> POST </button> <br>
+
+        <div class="con"></div>
+    </div>
+</body>
+</html>

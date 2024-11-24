@@ -1,0 +1,98 @@
+
+.frame{
+	overflow: hidden;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;  
+    background: linear-gradient(to top , #2ac1bc 90%, #5B7692)
+}
+
+.input-box{
+	text-align: center;
+	margin-top: 40px;
+}
+
+.input-box-title-h{
+	font-size: 40px;
+	color: white;
+}
+
+.menu-title-h{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.menu-title-input{
+    height: 55px;
+    width: 80%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu-comments-h{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.menu-comments-input{
+    height: 55px;
+    width: 80%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu-price-h{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.menu-price-input{
+    height: 55px;
+    width: 80%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.menu-img-h{
+	font-size: 23px;
+    font-weight: bold;
+	margin-bottom: 0px;
+}
+
+.menu-img-box{
+	width: 80%;
+    height: 120px;
+    margin: 0px auto;
+    box-shadow : 3px 3px 5px 0px rgb(0 0 0 / 15%);
+	background-color: #f1f1f1;
+    border : 1px solid #f1f1f1;
+    border-radius : 5px; 	
+}
+
+.menu-box-button-wrap{
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	bottom: 15px;
+}
+
+.menu-box-button-h{
+    color: rgb(228, 228, 228);
+	cursor: pointer;
+	font-size: 35px;
+    margin: 0px;
+}
+
+.menu-box-button-h:hover{
+    color: rgb(255, 255, 255);
+}
+
+.back-button{
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    position: absolute;
+    left: 15px;
+}

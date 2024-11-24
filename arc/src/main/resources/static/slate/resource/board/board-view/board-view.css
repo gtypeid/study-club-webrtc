@@ -1,0 +1,160 @@
+
+
+.frame{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+}
+
+.blind{
+    position: relative;
+    height: 100%;
+    top: 0px;
+    z-index: 1;
+    border-width: 6px;
+    border-radius: 28px;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.window-box{
+    max-width: 80%;
+    height: 85%;
+    position: relative;
+    top: 50px;
+    margin: 0px auto;
+    background-color: white;
+    border-style: solid;
+    border-color: aliceblue;
+    border-width: 5px;
+    box-shadow: 0 20px 42px rgba(0,0,0,0.75), 0 25px 25px rgba(0,0,0,0.25);
+}
+
+.window{
+    position: relative;
+    height: 40px;
+    width: 100%;
+    background-color: orange;
+}
+
+.window-close-button{
+    width: 25px;
+    margin-right: 10px;
+    height: 100%;
+    right: 0px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.delete-button-span0{
+    width: 100%;
+    height: 5px; 
+    position: relative;
+    top: 17px;
+    background-color: red;
+    display: block; 
+    transform: rotate(45deg);
+}
+
+.delete-button-span1{
+    width: 100%;
+    height: 5px; 
+    position: relative;
+    top: 12px;
+    background-color: red; 
+    display: block; 
+    transform: rotate(-45deg);
+}
+
+.user-box{
+    display: flex;
+    width: 150px;
+    height: 35px;
+    padding-left: 15px;
+}
+
+.user-thumbnail-box{
+    width: 35px;
+    height: 100%;
+}
+
+.user-thumbnail-img{
+    width: auto;
+    height: 100%;
+}
+
+.user-name-box{
+    display: flex;
+    width: 100%;
+}
+
+.user-name-p{
+    margin: 0px;
+    align-self: center;
+}
+
+.container{
+    width: auto;
+    height: calc(90% - 60px);
+    overflow: auto;
+    overflow-x: hidden;
+    padding-right: 5px;
+    padding-left: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: orange aliceblue;
+
+}
+
+.container-title-box{
+    width: auto;
+    height: auto;
+}
+
+.board-title{
+    font-size: 32px;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    margin-left: 0px;
+}
+
+.container-contents{
+    margin-bottom: 200px;
+}
+
+.input-box-wrap{
+    height: 55px;
+}
+
+.input-box{
+    width: calc(100% - 125px);
+    height: 90%;
+    font-size: 35px;
+    border: 0;
+    outline: none;
+    margin-left: 15px;
+    background-color: aliceblue;
+    transition: box-shadow 0.3s;
+}
+
+.input-box:hover{
+    box-shadow: 0 7px 15px rgba(0,0,0,0.09), 0 10px 10px rgba(0,0,0,0.09);
+}
+
+.send-button{
+    display: grid;
+    align-items: center;
+    width: 100px;
+    height: 100%;
+    float: right;
+    cursor: pointer;
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+}
+
+.send-button-p{
+    text-align: center;
+    font-size: 18px;
+    font-weight : bold;
+    margin: 0px;
+}

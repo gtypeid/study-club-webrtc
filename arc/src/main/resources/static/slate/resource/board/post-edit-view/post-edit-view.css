@@ -1,0 +1,58 @@
+
+
+.frame{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.post-edit{
+    border : 1px solid rgb(200, 200, 200);
+    width: 35%;
+    height: 50vh;
+    min-width: 300px;
+    margin: auto;
+}
+
+.post-edit-input-box{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 100px;
+}
+
+.post-edit-title-input{
+    display: block;
+    width: 80%;
+    height: 25px;
+    margin: 0px auto;
+    margin-bottom: 15px;
+}
+
+.post-edit-content-input{
+    display: block;
+    width: 80%;
+    height: 80%;
+    margin: 0px auto;
+}
+
+.post-edit-button{
+    display:grid;
+    align-items:center;
+    
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+
+    width: 30%;
+    height: 50px;
+    margin: 0px auto;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.1s;
+}
+
+.post-edit-button-p{
+    text-align: center;
+    font-size: 17px;
+    font-weight : bold;
+    margin: 0px;
+}

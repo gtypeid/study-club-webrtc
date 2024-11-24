@@ -1,0 +1,30 @@
+
+.frame { 
+    display: inline-block; 
+    overflow: hidden;
+    width: 80px; 
+    height: 80px; 
+    margin : 5px 5px 30px 5px;
+}
+
+.food-icon{ 
+    width: 60px; 
+    height: 60px; 
+    margin: 0px auto;
+    border-radius: 50%; 
+    background-image: url(/resource/path/icon-img.jpg);
+    background-repeat: no-repeat;
+}
+
+.food-icon:active{
+    width: 58px; 
+    height: 58px;
+    transition: width 0.1s, height 0.1s;
+}
+
+.food-title{
+    bottom: 0px;
+    margin: 0px;
+    font-size: 13px; 
+    text-align: center; 
+}

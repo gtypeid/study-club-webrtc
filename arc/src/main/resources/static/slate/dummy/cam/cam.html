@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+ *  Copyright (c) 2021 The WebRTC project authors. All Rights Reserved.
+ *
+ *  Use of this source code is governed by a BSD-style license
+ *  that can be found in the LICENSE file in the root of the source
+ *  tree.
+-->
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="description" content="WebRTC code samples">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="description" content="Client-side WebRTC code samples">
+    <meta itemprop="name" content="WebRTC code samples">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+
+    <base target="_blank">
+
+    <title>cam</title>
+
+    <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div id="container">
+    <style>
+        button {
+            margin: 0 20px 0 0;
+            width: 83px;
+        }
+    
+        button#hangupButton {
+            margin: 0;
+        }
+    
+        video {
+            --width: 45%;
+            width: var(--width);
+            height: calc(var(--width) * 0.75);
+            margin: 0 0 20px 0;
+            vertical-align: top;
+        }
+    
+        video#localVideo {
+            margin: 0 20px 20px 0;
+        }
+    
+        div.box {
+            margin: 1em;
+        }
+    
+        @media screen and (max-width: 400px) {
+            button {
+                width: 83px;
+                margin: 0 11px 10px 0;
+            }
+    
+            video {
+                height: 90px;
+                margin: 0 0 10px 0;
+                width: calc(50% - 7px);
+            }
+    
+            video#localVideo {
+                margin: 0 10px 20px 0;
+            }
+    
+        }
+    </style>
+    <video id="localVideo" playsinline autoplay muted></video>
+    <video id="remoteVideo" playsinline autoplay></video>
+
+    <div class="box">
+        <button id="startButton">Start</button>
+        <button id="hangupButton">Hang Up</button>
+    </div>
+
+    <div class="pipe-box">
+
+    </div>
+
+</div>
+
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="cam.js" async></script>
+
+</body>
+</html>

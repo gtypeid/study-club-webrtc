@@ -1,0 +1,55 @@
+
+
+.frame {
+    width: 37%;
+    min-width: 550px;
+    height: 93.5vh;
+    float: left;
+    margin-left: 35px;
+
+    position: relative;
+    overflow: hidden;
+    border-style: solid;
+    border-color: aliceblue;
+    border-width: 6px;
+    border-radius: 28px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.15);
+}
+
+.container{
+    width: auto;
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 15px 5px 15px 10px;
+    scrollbar-width: thin;
+    scrollbar-color: orange aliceblue;
+}
+
+.post-button{
+    display: none;
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    float: right;
+    bottom: 25px;
+    right: 25px;
+    cursor: pointer;
+    background-color: rgb(255, 165, 0, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10);
+    transition: background-color 0.25s, box-shadow 0.1s;
+}
+
+.post-button:hover{
+    background-color: rgb(255,165,0,1.0);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10);
+}
+
+.post-button-p{
+    margin: 0px auto;
+    text-align: center;
+    color: white;
+    font-size: 55px;
+    transform: translateY(-5px);
+}

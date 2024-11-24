@@ -1,0 +1,43 @@
+.frame{
+    width: 95%;
+    height: auto;
+    margin: 0px auto;
+    margin-top: 15px;
+    box-shadow : 3px 3px 5px 0px rgb(0 0 0 / 15%);
+    border : 1px solid #f1f1f1;
+    border-radius : 5px;
+    transition: box-shadow 0.2s;  
+
+    cursor: pointer;
+}
+
+.item-box{
+    display: flex;
+}
+
+.item-p{
+    margin-top: 7px;
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+.item-p:hover{
+    font-weight: bold;
+}
+
+.item-l{
+    margin-left: 3px;
+    width: 95px;
+}
+
+
+.item-p-r{
+    margin-top: 7px;
+    margin-bottom: 7px;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.item-p-r:hover{
+    color: red;
+}

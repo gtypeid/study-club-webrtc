@@ -1,0 +1,156 @@
+
+
+.frame{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.login-box{
+    border : 1px solid rgb(200, 200, 200);
+    width: 35%;
+    height: 50vh;
+    min-width: 300px;
+    margin: auto;
+}
+
+.login-box-title{
+    height: 80px;
+}
+
+.login-box-title-h{
+    text-align: center;
+}
+
+.login-box-id{
+    display: flex;
+}
+
+.login-box-id-input{
+    width: 90%;
+    height: 35px;
+    margin: 0px auto 15px ;
+}
+
+.login-box-password{
+    display: flex;
+}
+
+.login-box-password-input{
+    width: 90%;
+    height: 35px;
+    margin: 0px auto 15px ;
+}
+
+.login-box-button-wrap{
+    display: flex;
+    margin-top: 25px;
+}
+
+.login-box-button{
+    display:grid;
+    align-items:center;
+    
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+
+    width: 30%;
+    height: 50px;
+    margin: 0px auto;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.1s;
+}
+
+.login-box-button-p{
+    text-align: center;
+    font-size: 17px;
+    font-weight : bold;
+    margin: 0px;
+}
+
+.signin-box-button{
+    display:grid;
+    align-items:center;
+    
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+
+    width: 30%;
+    height: 50px;
+    margin: 0px auto;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.1s;
+}
+
+.signin-box-button-p{
+    text-align: center;
+    font-size: 17px;
+    font-weight : bold;
+    margin: 0px;
+}
+
+.logout-box-button{
+    display:grid;
+    align-items:center;
+    
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+
+    width: 30%;
+    height: 50px;
+    margin: 0px auto;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.1s;
+}
+
+.logout-box-button-p{
+    text-align: center;
+    font-size: 17px;
+    font-weight : bold;
+    margin: 0px;
+}
+
+.profile-box-button{
+    display:grid;
+    align-items:center;
+    
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+
+    width: 30%;
+    height: 50px;
+    margin: 0px auto;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.1s;
+}
+
+.profile-box-button-p{
+    text-align: center;
+    font-size: 17px;
+    font-weight : bold;
+    margin: 0px;
+}
+
+.login-box-button:hover{
+    background-color: rgb(255,165,0,0.8);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.03), 0 10px 10px rgba(0,0,0,0.03   );
+}
+
+.signin-box-button:hover{
+    background-color: rgb(255,165,0,0.8);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.03), 0 10px 10px rgba(0,0,0,0.03   );
+}
+
+.logout-box-button:hover{
+    background-color: rgb(255,165,0,0.8);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.03), 0 10px 10px rgba(0,0,0,0.03   );
+}
+
+.profile-box-button:hover{
+    background-color: rgb(255,165,0,0.8);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.03), 0 10px 10px rgba(0,0,0,0.03   );
+}

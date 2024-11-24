@@ -1,0 +1,37 @@
+.frame{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 2;
+}
+
+.container{
+    width: auto;
+    height: calc(100% - 75px);
+    overflow: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #2ac1bc aliceblue;
+}
+
+.bottom-box{
+    width: 100%;
+    height: 75px;
+}
+
+.back-button{
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transform: translateX(15px) translateY(15px);
+}
+
+.plus-button{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    float: right;
+    transform: translateX(-20px) translateY(10px);
+}
