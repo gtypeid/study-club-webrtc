@@ -487,5 +487,5 @@ SDP 인증서의 메타데이터가 변화할 때 ICE Candidate로부터 흘러�
 상태로 전환되었습니다.
 
 ## 📜 마무리
-- 작업 일 : 2024. 07
+- 작업 일 : 2024. 06
 - 발표 슬라이더 : https://docs.google.com/presentation/d/1X8NiNeOPEBSMGp2JbWUztfjYr_Dzy9Wv/edit#slide=id.p1
