@@ -71,7 +71,7 @@ Icecandidate (SDP)"| C[발신자]
 C[발신자] --> |"RemoteDescription"| D[연결]
 ```
 
-### 흐름도 (서버)
+### 흐름도 이미지 (서버)
 <img src="https://gtypeid.github.io/resource/path/folio/rtc-server-flow-0.png" width="600" alt="프로젝트 로고">
 <img src="https://gtypeid.github.io/resource/path/folio/rtc-server-flow-1.png" width="600" alt="프로젝트 로고">
 <img src="https://gtypeid.github.io/resource/path/folio/rtc-server-flow-2.png" width="600" alt="프로젝트 로고">
@@ -193,3 +193,174 @@ EventCapture를 통한 결과를 서버에서 클라이언트에게 메시지를
 - 해당 이벤트를 MsgQueue Pipe에 발행합니다.
 - Pipe는 PipeChain으로 부터 진입 시 필터를 거치고 발행 시 특정 로직을 처리하며,
 - 처리 결과가 시그널링 서버로 전송됩니다.
+
+```mermaid
+flowchart LR
+A[Server] -->|"Event
+SSE Stream"| B[Client]
+B[Client] --> |"BeatSync
+RoomInfo Version"| C["Pipe (MSG Queue)"]
+C["Pipe (MSG Queue)"]
+
+D[Pipe] --> |Filter| E[PipeChain]
+E[PipeChain] --> |Consume|F[EventRequest]
+F[EventRequest] --> |HttpRequest| G[Server]
+```
+
+### 흐름도 이미지 (클라이언트)
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-client-flow-0.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-client-flow-1.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-client-flow-2.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-client-flow-3.png" width="600" alt="프로젝트 로고">
+
+### 클래스 구조
+
+```mermaid
+classDiagram
+class RTCClient {
+    +Room room;
+    +CamClient camClient;
+    +ClientSyncer clientSyncer;
+    +Pipe pipe;
+    +RTCManager rtcManager;
+    +createRoom()
+    +joinRoom(uuid)
+}
+
+class ClientSyncer {
+    +EventSource sseEvent
+    +SyncBoard syncBoard;
+    +SyncChat syncChat;
+    +sseBind()
+    +beatSync(handleEvent, rsRoom)
+}
+
+class Pipe{
+    +PipeChain pipeChain
+    +enqueue(data)
+    +dequeue()
+    +publish(type)
+}
+
+class RTCManager {
+    +Map rtcStore
+    +spawnCaller(data)
+    +spawReceiver(data)
+    +connect(data)
+}
+
+class PipeChain {
+    +Funtions rtcStableCallbacks
+    +enqueueFilter(pipeItems, data)
+    +rtcStableFilter(type, cb)
+    +rtcStableSend(type, data)
+}
+
+RTCClient  --> ClientSyncer : references
+RTCClient  --> Pipe : references
+RTCClient  --> RTCManager : references
+Pipe --> PipeChain : references
+ClientSyncer --> SyncBoard : references
+ClientSyncer --> SyncChat : references
+```
+
+#### ClientSyncer
+- 서버와 이벤트를 송수신하여 클라이언트들과 동기화를 처리하는 클래스입니다.
+또한 Web RTC가 연결되어 P2P상태에 돌입 되었을 때에도 DataChanell을 통해 동기성을 처리합니다.
+  - sseBind
+  - Event Stream 콜백 및 DataChanell 콜백을 설정 합니다.
+    Event는 비트 싱크로 향하며,
+    P2P DataChanell Msg SyncBoard 및 SyncChat이 사용합니다.
+     ```java
+        sseBind(rs){
+            .
+            .
+            .
+
+            this._eventSource = new EventSource(path);
+            this._eventSource.onmessage = (e) =>{
+                const roomStateEventHandler = JSON.parse(e.data);
+                this.heartbeatSyncStatus(roomStateEventHandler.handleEvent, roomStateEventHandler.room);
+            }
+    
+            this._rtcManager.msgReceiver = (event) =>{
+                const receivedBuffer = event.data;
+                const receivedString = new TextDecoder().decode(receivedBuffer);
+                const receivedObj = JSON.parse(receivedString);
+                this._SyncBoard.receive(receivedObj);
+                this._SyncChat.receive(receivedObj);
+            }
+
+        }
+    ```    
+  - heartbeatSyncStatus
+  - 서버의 룸 정보 및 이벤트에 의거 적합한 이벤트를 Pipe로 발행합니다.
+     ```java
+       heartbeatSyncStatus(handleEvent, rsRoom){
+          .
+          .
+          .
+          if(room.lastModified < rsRoom.lastModified){
+    
+              if(eventType === "join"){
+                  this.syncJoin(rsRoom);
+              }
+    
+              this._rtcClient.updateBeatSync(rsRoom);
+          }
+          else if(room.lastModified === rsRoom.lastModified){
+              if(eventType === "offer"){
+                  this.syncHandleOffer(handleEvent)
+              }
+    
+              if(eventType === "answer"){
+                  this.syncHandleAnswer(handleEvent)
+              }
+          }
+    
+      }
+                          
+                              
+    
+      syncJoin(rsRoom){
+          .
+          .
+          for(let it of Object.values(rsRoom.camClients)){
+              const target = it;
+              if(camIndex < target.index){
+                  const data = { type : "offer", target : target.clientUuid, sdp : ""};
+                  pipe.enqueue(data);
+              }
+          }
+          pipe.publish("offer");
+      }
+    ```
+#### RTCClient
+- RTC Client의 진입점 및 여러 객체를 관리하는 클래스입니다.
+파이프라인을 정의하기도 합니다.
+  - preCreatePipeLine
+  - RTC Manager에 발신자 혹은 수신자를 요청하거나,
+    이벤트 파이프 라인을 파이프 체인으로부터 구축합니다.
+    필터를 통해 진입 여부 콜백 정의하거나,
+    발행시 처리해야 할 로직을 정의하고 서버로 이벤트를 발행합니다.
+    ```java
+      async preCreatePipeLine(){
+        .
+        .
+        pipeChain.setRtcStableFilter("offer", (data)=>{
+            return !this._rtcManager.hasRtc(data);
+        });
+
+        pipeChain.setRtcStableSend("offer", async (data)=>{
+            const rtcCaller = await this._rtcManager.spawnCaller(data);
+            .
+            .
+            .
+            const handleEvent = new HandleEvent()
+                .spawn("offer", roomUuid, clientUuid, targetUuid, offer);
+
+            const eventType = "offer";
+            this._server.hanlder( handleEvent );
+        });
+    }
+     ```
