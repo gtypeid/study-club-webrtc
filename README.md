@@ -32,6 +32,7 @@ https://github.com/user-attachments/assets/279e2cb9-9a5c-4d94-b78a-3d664af47a20
 드로잉 선 & 커서 & 이미지 파일들을 동기화합니다.
 <br><br>
 
+https://github.com/user-attachments/assets/67b81f44-1052-477f-8bb1-bb47fd83699c
 - N:N 다수의 WebRTC 연결 모습입니다.
 <br><br>
 
