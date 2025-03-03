@@ -25,14 +25,13 @@ WebRTC 연결 과정을 NodeJs, Socket이 아닌 Http 메시지로 핸들링하�
   
 ## 🔍 프로젝트 살펴보기
 ### RTC 시연
-<img src="https://gtypeid.github.io/resource/path/folio/rtc-1.gif" width="700" alt="프로젝트 로고"><br><br>
+https://github.com/user-attachments/assets/279e2cb9-9a5c-4d94-b78a-3d664af47a20
 - WebRTC 두 클라이언트의 P2P연결 후 화면입니다.
 데이터 채널을 통해 채팅 및
 캔버스 메타 데이터를 전달 받으며
 드로잉 선 & 커서 & 이미지 파일들을 동기화합니다.
 <br><br>
 
-<img src="https://gtypeid.github.io/resource/path/folio/rtc-0.gif" width="700" alt="프로젝트 로고"><br><br>
 - N:N 다수의 WebRTC 연결 모습입니다.
 <br><br>
 
