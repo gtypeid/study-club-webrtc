@@ -271,7 +271,7 @@ ClientSyncer --> SyncChat : references
   - Event Stream 콜백 및 DataChanell 콜백을 설정 합니다.
     Event는 비트 싱크로 향하며,
     P2P DataChanell Msg SyncBoard 및 SyncChat이 사용합니다.
-     ```java
+     ```javascript
         sseBind(rs){
             .
             .
@@ -295,7 +295,7 @@ ClientSyncer --> SyncChat : references
     ```    
   - heartbeatSyncStatus
   - 서버의 룸 정보 및 이벤트에 의거 적합한 이벤트를 Pipe로 발행합니다.
-     ```java
+     ```javascript
        heartbeatSyncStatus(handleEvent, rsRoom){
           .
           .
@@ -343,7 +343,7 @@ ClientSyncer --> SyncChat : references
     이벤트 파이프 라인을 파이프 체인으로부터 구축합니다.
     필터를 통해 진입 여부 콜백 정의하거나,
     발행시 처리해야 할 로직을 정의하고 서버로 이벤트를 발행합니다.
-    ```java
+    ```javascript
       async preCreatePipeLine(){
         .
         .
@@ -364,3 +364,128 @@ ClientSyncer --> SyncChat : references
         });
     }
      ```
+    
+#### RTCManager
+- EventStream 및 Pipe로 부터 발행되는 콜백으로 인한 상태 변화에,
+  RTC 객체 상태를 전환시키며 RTC Connect Flow를 컨트롤 하는 클래스입니다.
+  - spawnCaller
+  - 발신자를 생성합니다. 상태를 소유하고 있는 RTC 객체를 할당하며,
+    WebRTC P2P DataChannel, 혹은 WebRTC 콜백 등을 정의합니다.
+    SDP 인증서 및 Video Element를 관리합니다.
+    ```javascript
+    async spawnCaller(data){
+        .
+        .
+        if(!hasKey){
+            const rtc = new RTC(target);
+            typeMap.set(target, rtc);
+  
+            const result = await rtc.changeStatus( RTC.status.spawnCaller, async ()=>{
+                rtc.pc = new RTCPeerConnection();
+                rtc.dc = rtc.pc.createDataChannel("channel");
+                rtc.dc.onopen = (event) => {
+                    this._connector(event);
+                };
+  
+                rtc.dc.onmessage = (event) => {
+                    this._msgReceiver(event);
+                };
+  
+                const iceSdpPromise = new Promise(resolve => {
+                    rtc.pc.onicecandidate = (event) => {
+                        if (rtc.pc && rtc.pc.localDescription) {
+                            rtc.iceSDP = JSON.stringify(rtc.pc.localDescription);
+                            resolve(rtc.iceSDP);
+                        }
+                    };
+                });
+  
+                rtc.pc.ontrack = ( event ) => {
+                    rtc.spawnRemoteVideo(event);
+                }
+  
+                const offer = await rtc.pc.createOffer();
+                await rtc.pc.setLocalDescription(offer);
+                await iceSdpPromise;
+                return typeMap.get(target);
+            });
+  
+            return result;
+        }
+  
+        return typeMap.get(target);
+    }
+    ```
+#### SyncBoard
+- DataChanell을 통해 사용자들의 송수신된 데이터를 기반 보드를 동기화합니다.
+  메인 캔버스 뒤에 버퍼 캔버스를 두 개를 추가로 배치하여,
+  반응성 및 객체 관리를 향상시켰습니다.
+  - receive
+  - 수신받은 메타 데이터를 확인하여 보드를 지우거나,
+    라인 및 커서 및 이미지를 그려냅니다.
+    ```java
+    receive(data){
+        const { owner, msg, type} = data;
+
+        if(type === "board"){
+            const drawData = JSON.parse(msg);
+            this.drawing(owner, drawData.style, drawData.x, drawData.y);
+        }
+        else if(type === "board-img"){
+            const imgData = JSON.parse(msg);
+            const img = new Image();
+            img.src = imgData.basebuffer;
+            img.onload = ()=>{
+                const {x, y, sizeX, sizeY } = imgData.imgstyle;
+                this._bfCtx.drawImage(img, x, y, sizeX, sizeY);
+                this._bfCtx.drawImage(this._lineCanvas, 0, 0);
+                this._ctx.drawImage(this._bufferCanvas, 0, 0);
+            }   
+        }
+        else if(type === "board-system"){
+            if(msg === "eraser"){
+                this.eraser();
+            }
+        }
+    }
+    ```
+    
+## 🚀 전체 프로세스 플로우
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-flow-0.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-flow-1.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-flow-2.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-flow-3.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-flow-4.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-flow-5.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-flow-6.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-flow-7.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-flow-8.png" width="600" alt="프로젝트 로고">
+<img src="https://gtypeid.github.io/resource/path/folio/rtc-flow-9.png" width="600" alt="프로젝트 로고">
+
+## 📊 프로젝트 회고
+### 좋았던 점
+- 클라이언트의 요청에 따라 이벤트가 발생할 때, 해당 이벤트에 맞춰 클라이언트에게 멀티캐스트 방식으로
+데이터를 전송하는 과정을 HTTP 통신만을 이용하여 시도해보았습니다.
+- 리액티브 프로그래밍의 이벤트 구독, 발행 모델을 모방하여 시스템을 구현해보았습니다. 서버는
+EventCapture 인터페이스에 이벤트 처리 로직을 위임함으로써 기존 코드의 변경 없이 손쉽게 이벤트를 확장할
+수 있도록 디자인하였습니다. 또한, 스프링 컴포넌트 및 컨테이너 등록을 활용하여 스프링의 철학을 적용하는
+방법에 대해 고민해보았습니다.
+- 클라이언트는 메시지 큐 이벤트 파이프를 통해 진입 점 필터링과 발행 시 처리되는 로직을 분리하여,
+확장성을 고려한 구조로 설계하였습니다.
+- P2P연결 이후 WebRTC가 데이터를 주고받는 데이터 채널을 통한 컨텐츠 동기화 작업 또한 흥미로웠습니다.
+
+### 아쉬운 점
+- 예외 처리 상태가 미흡합니다. 일련의 이벤트가 처리되는 과정이 온전하지 못할 때 이를 복구하는 기능은 없습니다.
+
+### 문제 발생 및 해결
+- WebRTC 연결 중, Offer와 Answer를 주고받은 후 ICE Candidate가 오가는 레퍼런스를 참고하여 연결을 시도했으나 ,
+의도한 대로 작동하지 않았습니다. 그래서 다른 레퍼런스를 참고하거나 , 흐름도를 다시 파악한 결과, 발신자는 Offer를
+생성하고 Description을 이용해 SDP를 등록한 후 상대방에게 인증서를 전달하는 방식이 아니라,
+SDP 인증서의 메타데이터가 변화할 때 ICE Candidate로부터 흘러나오는 (콜백) 후보자들이 등록된 SDP 인증서를 통해
+변경된 인증서를 제공하는 프로세스로 변경하였습니다.
+이하, Answer 응답도 ICE Candidate 흐름을 중간에 섞어서 처리하였으며 그 결과, 발신자와 수신자는 온전한 P2P 연결
+상태로 전환되었습니다.
+
+## 📜 마무리
+- 작업 일 : 2024. 07
+- 발표 슬라이더 : https://docs.google.com/presentation/d/1X8NiNeOPEBSMGp2JbWUztfjYr_Dzy9Wv/edit#slide=id.p1
